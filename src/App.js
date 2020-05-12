@@ -4,20 +4,22 @@ import './App.css'
 import Header from './components/header/header.component'
 import GlobalStateProvider from './store/GlobalStateProvider'
 import ReleaseContextProvider from './store/ReleaseContext'
-import RetailContextProvider from './store/RetailContext';
-
+import RetailContextProvider from './store/RetailContext'
+import Loader from './components/loader/loader.component'
 const HomePage = lazy(() => import('./pages/home/home.component'))
 const ReleasePage = lazy(() => import('./pages/releases/releases.component'))
 const RetailPage = lazy(() => import('./pages/retail/retail.component'))
 function App() {
+
+
+
   return (
     <GlobalStateProvider>
       <div className="App">
       <Header />
      <Switch>
-       <Suspense fallback={<div>Hey</div>}>
-       <Route path={'/'} component={HomePage} exact />
-        
+       <Suspense fallback={<Loader/>}>
+       <Route  path={'/'} component={HomePage} exact />
         <ReleaseContextProvider>
           <Route path={'/releases'} component={ReleasePage} />
         </ReleaseContextProvider>

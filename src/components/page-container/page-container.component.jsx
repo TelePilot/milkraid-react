@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
+import Context from '../../store/context'
+import Loader from '../loader/loader.component'
 
 const Container = styled.div`
     width: 100%;
@@ -12,9 +14,15 @@ const PageContainer = (props) => {
     if(window.scrollY) {
         window.scroll(0,0)
     }
+    const { globalState } = useContext(Context)
     return (
         <Container>
-            {props.children}
+            {
+                globalState.isLoaded ?
+                props.children :
+                <Loader/>
+                
+            }
         </Container>
     )
 }

@@ -12,6 +12,7 @@ const HeaderCont = styled.div`
     height: auto;
     top: 0;
     left: 0;
+    z-index: 99;
 `
 
 const Header = (props) => {

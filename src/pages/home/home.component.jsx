@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 const Home = () => {
+    useEffect(() => {
+        document.getElementById('wrapper').style.display = 'block'
+        return function cleanup() {
+            document.getElementById('wrapper').style.display = 'none'
+        }
+    },[])
     return (
-        <div style={{background: 'black', height: '100vh'}}>
-            <h1 style={{margin: '0', color: 'white'}}>this is home</h1>
+        <div id="three-home" style={{pointerEvents: 'none', width: '100%', height: '100vh'}}>
         </div>
     )
 }

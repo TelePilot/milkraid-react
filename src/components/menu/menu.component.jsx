@@ -10,6 +10,7 @@ const MenuCont = styled.div`
     align-items: flex-start;
     flex-flow: column;
     padding: 5% 15%;
+    z-index: 10;
     `
 const MenuItem = styled(Link)`
     text-decoration: none;
