@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Thumbnail from '../tumbnail/thumbnail.component';
+import Thumbnail from '../tumbnail/thumbnail.component'
 
 const Container = styled.div`
     width: 100%;

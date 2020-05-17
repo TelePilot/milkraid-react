@@ -27,11 +27,12 @@ const SocialItem = styled.a`
 
 `
 
-const Socials = ({socials}) => {
+const Socials = ({socials, home}) => {
     return (
         <SocialCont>
             {socials ? socials.map((item, id) => <SocialItem href={item.link} key={id}>
-                <img src={urlFor(item.icon).url()} alt={item.name}/>
+             
+                <img src={home === 'home' ? urlFor(item.icon[0].invertedIcon).url() :urlFor(item.icon[0].icon).url()} alt={item.name}/>
             </SocialItem>): null}
         </SocialCont>
     )

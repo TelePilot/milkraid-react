@@ -17,10 +17,10 @@ const HeaderCont = styled.div`
 
 const Header = (props) => {
     const [header, setHeader] = useState('')
-    const [className, setClassName] = useState("home")
+    const [styleName, setStyleName] = useState("home")
     useEffect(() => {
         const headerQuery = `*[_type == "header"]
-        {logo, invertedLogo, menu, socials }`
+        {logo, invertedLogo, menu, socials[]{name, link, icon[]->{icon, invertedIcon}} }`
         sanityClient.fetch(headerQuery).then(header => {
     
           header.forEach(header => {
@@ -29,13 +29,13 @@ const Header = (props) => {
         })
     }, [])
     useEffect(function() {
-        setClassName(props.match.isExact ? "home" : "not-home")
+        setStyleName(props.match.isExact ? "home" : "not-home")
       }, [props.match.isExact])
     return (
-        <HeaderCont className={className} {...props}>
+        <HeaderCont className={styleName} {...props}>
             <Logo logo={header.logo} invertedLogo={header.invertedLogo} />
             <Menu menu={header.menu} />
-            <Socials socials={header.socials}/>
+            <Socials socials={header.socials} home={styleName}/>
         </HeaderCont>
     )
 }
