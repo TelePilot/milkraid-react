@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 import { Route, Switch} from 'react-router-dom'
 import './App.css'
 import Header from './components/header/header.component'
@@ -13,7 +13,17 @@ const ReleasePage = lazy(() => import('./pages/releases/releases.component'))
 const RetailPage = lazy(() => import('./pages/retail/retail.component'))
 function App() {
 
-
+  useEffect(() => {
+    if(document.location.pathName === '/') {
+      document.getElementById('wrapper').style.display = 'block'
+    }
+    else {
+      document.getElementById('wrapper').style.display = 'none'
+    }
+    return function cleanup() {
+        document.getElementById('wrapper').style.display = 'none'
+    }
+},[])
 
   return (
     <GlobalStateProvider>
