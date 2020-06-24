@@ -7,23 +7,17 @@ import ArtistContextProvider from './store/ArtistContext'
 import ReleaseContextProvider from './store/ReleaseContext'
 import RetailContextProvider from './store/RetailContext'
 import Loader from './components/loader/loader.component'
+import ArtistExt from './pages/artist-ext/artist-ext.component'
 const HomePage = lazy(() => import('./pages/home/home.component'))
 const ArtistPage = lazy(() => import('./pages/artists/artists.component'))
 const ReleasePage = lazy(() => import('./pages/releases/releases.component'))
 const RetailPage = lazy(() => import('./pages/retail/retail.component'))
 function App() {
 
-  useEffect(() => {
-    if(document.location.pathName === '/') {
-      document.getElementById('wrapper').style.display = 'block'
-    }
-    else {
+  useEffect(() => { 
       document.getElementById('wrapper').style.display = 'none'
-    }
-    return function cleanup() {
-        document.getElementById('wrapper').style.display = 'none'
-    }
 },[])
+  
 
   return (
     <GlobalStateProvider>
@@ -33,7 +27,8 @@ function App() {
        <Suspense fallback={<Loader/>}>
        <Route  path={'/'} component={HomePage} exact />
         <ArtistContextProvider>
-          <Route path={'/artists'} component={ArtistPage} />
+          <Route path={'/artists'} exact component={ArtistPage} />
+          <Route path={'/artists/:artistId'} component={ArtistExt} />
         </ArtistContextProvider>
         <RetailContextProvider>
           <Route path={'/retail'} component={RetailPage} />

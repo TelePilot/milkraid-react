@@ -9,12 +9,12 @@ function urlFor(source) {
 }
 
 const SocialCont = styled.div`
-    width: 100%;
+
     height: auto; 
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 15%;
+    padding-left: 15%;
 `
 
 const SocialItem = styled.a`

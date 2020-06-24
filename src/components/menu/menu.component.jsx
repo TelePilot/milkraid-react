@@ -23,7 +23,7 @@ const Menu = ({menu}) => {
     console.log(menu)
     return (
         <MenuCont>
-            {menu ? menu.map((item, id) =>  <MenuItem style={window.location.pathname === '/' ? {color: 'white' }: {color: 'black'}} to={item.link} key={id}>{item.name}</MenuItem>): null}
+            {menu ? menu.map((item, id) =>  <MenuItem style={window.location.pathname === '/' ? {color: 'white' }: {color: 'black'}} to={`${item.link}`} key={id}>{item.name}</MenuItem>): null}
         </MenuCont>
     )
 }

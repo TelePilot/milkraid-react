@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { ArtistContext }  from '../../store/ArtistContext'
 import Thumbnail from '../../components/tumbnail/thumbnail.component'
@@ -15,13 +16,24 @@ const ReleaseContainer = styled.div`
     grid-template-columns: 1fr 1fr;
 
 `
+const ReleaseLink = styled(Link)``
 const ReleaseItem = styled.div`
-    width: 100%;
-    height: auto;
-
-    border: 1px solid black;
+    width: 450px;
+    height: 450px;
+    text-align: left;
+    
 `
-const Title = styled.h2``
+const Title = styled.h2`
+    color: black;
+    font-size: 32px;
+`
+const SocialCont = styled.div`
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    `
 
 const Artists = () => {
     const { artists } = useContext(ArtistContext)
@@ -29,13 +41,19 @@ const Artists = () => {
         <PageContainer>
         <ReleaseContainer>
            {artists ? artists.map((item, id) => 
-           <ReleaseItem key={id}>
-               <Thumbnail thumbnail={item.thumbnail} />
-               <Title>{item.artist}</Title>
-               <Title>{item.title}</Title>
-               <Socials socials={item.socials} />
-               <Spotify embed={item.spotifyEmbed} />
-           </ReleaseItem>): null}
+          
+            <ReleaseItem key={id}>
+                 <ReleaseLink  to={`artists/${item.name}`}>
+                 <Thumbnail thumbnail={item.thumbnail} />
+                 </ReleaseLink>
+               
+               <SocialCont>
+                    <Title>{item.name}</Title>
+                    <Socials socials={item.socials} />   
+               </SocialCont>
+           </ReleaseItem>
+       
+           ): null}
        </ReleaseContainer>
    </PageContainer>
     )

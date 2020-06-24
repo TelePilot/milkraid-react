@@ -8,17 +8,18 @@ const builder = imageUrlBuilder(sanityClient)
 function urlFor(source) {
   return builder.image(source)
 }
-const ThumbnailImg = styled.img`
-  width: 70%;
+const ThumbnailImg = styled.div`
+  width: 100%;
+  height: 100%;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 `
 
 const Thumbnail = ({thumbnail}) => {
     return (
-      <div>
-           <ThumbnailImg src={urlFor(thumbnail).url()} alt="artist/product image" />
-      </div>
+           <ThumbnailImg style={{backgroundImage: `url(${urlFor(thumbnail).url()})`}} />
      
-        
     )
 }
 

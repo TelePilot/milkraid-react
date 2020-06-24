@@ -8,7 +8,9 @@ const ArtistContextProvider = (props) => {
     const {globalState, globalDispatch} = useContext(Context)
     useEffect(() => {
         globalDispatch({type: "LOADING"})
-        const artistQuery = `*[_type == "artist"] | order(date desc)`
+        const artistQuery = `*[_type == "artist"] | order(date desc){
+           thumbnail, name, videos, articles, releases, banner, socials[]{name, link, icon[]->{icon, invertedIcon}}
+        }`
         const artistArray = []
         sanityClient.fetch(artistQuery).then(artists => {
             

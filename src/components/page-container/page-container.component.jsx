@@ -5,7 +5,7 @@ import Loader from '../loader/loader.component'
 
 const Container = styled.div`
     width: 100%;
-    padding: 5% 0 100px 20%;
+    padding: 2% 0 100px 20%;
     box-sizing: border-box;
     overflow-x: hidden;
 `
