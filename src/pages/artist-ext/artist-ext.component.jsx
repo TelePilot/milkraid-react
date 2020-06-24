@@ -52,7 +52,8 @@ const Title = styled.h1`
 `
 const ReleaseText = styled.h2`
     text-align: left;
-    font-size: 32px;`
+    font-size: 32px;
+    color: black`
 const ReleaseItem = styled.iframe`
     width: 100%;
     height: 250px;
