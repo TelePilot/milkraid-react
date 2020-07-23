@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react'
-import { Route, Switch} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import Header from './components/header/header.component'
 import GlobalStateProvider from './store/GlobalStateProvider'
@@ -13,32 +13,25 @@ const ArtistPage = lazy(() => import('./pages/artists/artists.component'))
 const ReleasePage = lazy(() => import('./pages/releases/releases.component'))
 const RetailPage = lazy(() => import('./pages/retail/retail.component'))
 function App() {
-
-  useEffect(() => { 
-      document.getElementById('wrapper').style.display = 'none'
-},[])
-  
-
-  return (
-    <GlobalStateProvider>
-      <div className="App">
-      <Header />
-     <Switch>
-       <Suspense fallback={<Loader/>}>
-       <Route  path={'/'} component={HomePage} exact />
-        <ArtistContextProvider>
-          <Route path={'/artists'} exact component={ArtistPage} />
-          <Route path={'/artists/:artistId'} component={ArtistExt} />
-        </ArtistContextProvider>
-        <RetailContextProvider>
-          <Route path={'/retail'} component={RetailPage} />
-        </RetailContextProvider>
-       </Suspense>
-      </Switch>
-      </div>
-    </GlobalStateProvider>
-    
-  )
+	return (
+		<GlobalStateProvider>
+			<div className='App'>
+				<Header />
+				<Switch>
+					<Suspense fallback={<Loader />}>
+						<Route path={'/'} component={HomePage} exact />
+						<ArtistContextProvider>
+							<Route path={'/artists'} exact component={ArtistPage} />
+							<Route path={'/artists/:artistId'} component={ArtistExt} />
+						</ArtistContextProvider>
+						<RetailContextProvider>
+							<Route path={'/retail'} component={RetailPage} />
+						</RetailContextProvider>
+					</Suspense>
+				</Switch>
+			</div>
+		</GlobalStateProvider>
+	)
 }
 
 export default App
