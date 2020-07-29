@@ -1,16 +1,14 @@
-import React, { lazy, Suspense, useEffect } from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import Header from './components/header/header.component'
 import GlobalStateProvider from './store/GlobalStateProvider'
 import ArtistContextProvider from './store/ArtistContext'
-import ReleaseContextProvider from './store/ReleaseContext'
 import RetailContextProvider from './store/RetailContext'
 import Loader from './components/loader/loader.component'
 import ArtistExt from './pages/artist-ext/artist-ext.component'
 const HomePage = lazy(() => import('./pages/home/home.component'))
 const ArtistPage = lazy(() => import('./pages/artists/artists.component'))
-const ReleasePage = lazy(() => import('./pages/releases/releases.component'))
 const RetailPage = lazy(() => import('./pages/retail/retail.component'))
 function App() {
 	return (
